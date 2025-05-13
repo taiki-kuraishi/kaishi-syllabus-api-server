@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@cloudflare/vitest-pool-workers": "^0.8.19",
+    "@cloudflare/vitest-pool-workers": "^0.8.28",
     "@cloudflare/workers-types": "^4.20250513.0",
     "editorconfig-checker": "^6.0.1",
     "lefthook": "^1.11.12",
