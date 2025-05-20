@@ -9,8 +9,11 @@ import { SyllabusSeeder } from "./syllabusSeeder";
 export async function main() {
   dotenv.config();
 
-  // biome-ignore lint/complexity/useLiteralKeys: not production code
-  // biome-ignore lint/style/noNonNullAssertion: not production code
+  /**
+   * biome-ignore lint/complexity/useLiteralKeys: not production code
+   * biome-ignore lint/style/noNonNullAssertion: not production code
+   * @ts-ignore not production code
+   */
   const dbUrl = process.env["DATABASE_URL"]!;
 
   const db = drizzle(dbUrl);
