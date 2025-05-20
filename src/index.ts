@@ -19,4 +19,10 @@ export default class extends WorkerEntrypoint {
 
     this.syllabusService = new SyllabusService(syllabusRepository);
   }
+
+  fetch(): Response {
+    return Response.json({
+      status: "ok",
+    });
+  }
 }
