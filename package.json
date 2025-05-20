@@ -14,7 +14,8 @@
     "db:reset": "bunx supabase db reset && bun run db:seed",
     "db:generate": "drizzle-kit generate --config=./src/libs/drizzle-orm/drizzle.config.ts",
     "db:migrate": "supabase migration up",
-    "db:seed": "dotenv -e .dev.vars -- bun ./src/database/seeders/index.ts"
+    "db:seed": "dotenv -e .dev.vars -- bun ./src/database/seeders/index.ts",
+    "preview": "wrangler dev"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
