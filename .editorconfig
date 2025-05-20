@@ -17,3 +17,8 @@ trim_trailing_whitespace = false
 indent_style = unset
 indent_size = unset
 trim_trailing_whitespace = false
+
+[supabase/migrations/**]
+indent_style = unset
+indent_size = unset
+trim_trailing_whitespace = false
