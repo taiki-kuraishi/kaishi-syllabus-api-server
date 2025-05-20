@@ -30,4 +30,6 @@ jobs:
       - run: bunx biome lint
       - run: bunx biome format
       - run: bun editorconfig-checker
+      - run: bun run db:start
+      - run: bun run db:migrate
       - run: bun run test
