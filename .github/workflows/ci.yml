@@ -10,8 +10,23 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     name: ci
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: "postgres"
+          POSTGRES_PASSWORD: "postgres"
+          POSTGRES_DB: "postgres"
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5433:5432
     steps:
       - uses: actions/checkout@v4
+      - uses: arduino/setup-task@v2
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
@@ -22,13 +37,19 @@ jobs:
           path: ${{ github.workspace }}/node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/bun.lock') }}
       - run: bun install --frozen-lockfile
-      - run: bunx depcheck
       - run: bun knip-bun
-      - run: bun run cf-typegen
-      - name: diff check cf-typegen
+      - run: task cloudflare-type-generate
+      - name: diff check cloudflare-type-generate
         run: git diff --exit-code -- worker-configuration.d.ts
       - run: bun run tsc
       - run: bunx biome lint
       - run: bunx biome format
       - run: bun editorconfig-checker
-      - run: bun run test
+
+      - name: Run Migrations
+        env:
+          DB_URL: postgresql://postgres:postgres@127.0.0.1:5433/postgres
+          MIGRATION_DIR: supabase/migrations
+        run: |
+          bun script/database/migrate.ts ${{ env.DB_URL }} ${{ env.MIGRATION_DIR }}
+      - run: bun vitest run

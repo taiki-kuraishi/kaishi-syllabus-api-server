@@ -1,9 +1,9 @@
 import { createExecutionContext, env, waitOnExecutionContext } from "cloudflare:test";
 import { describe, expect, it } from "vitest";
-import WorkerClass from "../src/index";
+import WorkerClass from "../../src/index";
 
-describe("Hello World worker", () => {
-  it("responds with Hello World! (unit style)", async () => {
+describe("fetch entry point", () => {
+  it("responds with status ok", async () => {
     // arrange
     const ctx = createExecutionContext();
     const worker = new WorkerClass(ctx, env);
@@ -13,6 +13,6 @@ describe("Hello World worker", () => {
     await waitOnExecutionContext(ctx);
 
     // assert
-    expect(await response.text()).toMatchInlineSnapshot(`"Hello from counter-service"`);
+    expect(await response.json()).toEqual({ status: "ok" });
   });
 });
