@@ -16,7 +16,7 @@
     "knip": "^5.59.1",
     "lefthook": "^1.11.13",
     "pg": "^8.16.0",
-    "supabase": "^2.22.12",
+    "supabase": "^2.24.3",
     "typescript": "^5.5.2",
     "vitest": "~3.2.1",
     "wrangler": "^4.14.4"
