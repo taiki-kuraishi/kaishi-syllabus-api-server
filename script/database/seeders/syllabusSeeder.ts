@@ -1,4 +1,4 @@
-import type { InsertSyllabus } from "../../models/syllabus";
+import type { InsertSyllabus } from "../../../src/models/syllabus";
 
 export const SyllabusSeeder: InsertSyllabus[] = [
   {

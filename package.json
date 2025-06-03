@@ -3,27 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prepare": "lefthook install && cp .dev.vars.example .dev.vars",
-    "dev": "wrangler dev",
-    "format": "biome check --fix --unsafe",
-    "lint": "bun format && bun tsc && bun editorconfig-checker",
-    "test": "vitest run",
-    "cf-typegen": "wrangler types",
-    "db:start": "bunx supabase start",
-    "db:stop": "bunx supabase stop",
-    "db:reset": "bunx supabase db reset && bun run db:seed",
     "db:generate": "drizzle-kit generate --config=./src/libs/drizzle-orm/drizzle.config.ts",
-    "db:migrate": "supabase migration up",
-    "db:seed": "dotenv -e .dev.vars -- bun ./src/database/seeders/index.ts",
-    "preview": "wrangler dev"
+    "db:migrate": "supabase migration up"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@cloudflare/vitest-pool-workers": "^0.8.34",
     "@cloudflare/workers-types": "^4.20250529.0",
-    "@types/node": "^22.15.19",
-    "dotenv": "^16.5.0",
-    "dotenv-cli": "^8.0.0",
+    "@types/node": "^22.15.29",
     "drizzle-kit": "^0.31.1",
     "editorconfig-checker": "^6.0.1",
     "knip": "^5.59.1",
@@ -35,7 +22,7 @@
     "wrangler": "^4.14.4"
   },
   "dependencies": {
-    "drizzle-orm": "^0.43.1",
-    "postgres": "^3.4.5"
+    "drizzle-orm": "0.43.1",
+    "postgres": "3.4.5"
   }
 }

@@ -10,10 +10,8 @@ pre-commit:
       run: bun editorconfig-checker
     cloudflare-type-generate:
       stage_fixed: true
-      run: bun run cf-typegen
-    depcheck:
-      run: bunx depcheck
+      run: task cloudflare-type-generate
     test:
-      run: bun run test
+      run: task test
     knip:
       run: bun knip-bun
