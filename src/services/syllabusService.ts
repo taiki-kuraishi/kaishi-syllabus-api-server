@@ -13,7 +13,7 @@ export class SyllabusService implements SyllabusServiceInterface {
   }
 
   /**
-   * 全権取得
+   * 全件取得
    */
   async getAllSyllabus(): Promise<SelectSyllabus[]> {
     return await this.repository.getAllSyllabus();
