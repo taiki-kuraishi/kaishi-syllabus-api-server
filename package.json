@@ -23,6 +23,6 @@
   },
   "dependencies": {
     "drizzle-orm": "0.43.1",
-    "postgres": "3.4.5"
+    "postgres": "3.4.7"
   }
 }
