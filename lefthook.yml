@@ -13,3 +13,5 @@ pre-commit:
       run: bun run cf-typegen
     depcheck:
       run: bunx depcheck
+    knip:
+      run: bun knip-bun
