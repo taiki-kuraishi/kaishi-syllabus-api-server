@@ -1,1 +1,2 @@
 skip-missing: true
+ignores: ["knip"]
