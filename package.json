@@ -22,7 +22,7 @@
     "wrangler": "^4.19.1"
   },
   "dependencies": {
-    "drizzle-orm": "0.44.1",
+    "drizzle-orm": "0.44.2",
     "postgres": "3.4.7"
   }
 }
