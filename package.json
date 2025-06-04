@@ -9,7 +9,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@cloudflare/vitest-pool-workers": "^0.8.35",
-    "@cloudflare/workers-types": "^4.20250529.0",
+    "@cloudflare/workers-types": "^4.20250604.0",
     "@types/node": "^22.15.29",
     "drizzle-kit": "^0.31.1",
     "editorconfig-checker": "^6.0.1",
