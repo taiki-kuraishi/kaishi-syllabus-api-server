@@ -19,7 +19,7 @@
     "supabase": "^2.24.3",
     "typescript": "^5.5.2",
     "vitest": "~3.2.3",
-    "wrangler": "^4.19.1"
+    "wrangler": "^4.19.2"
   },
   "dependencies": {
     "drizzle-orm": "0.44.2",
