@@ -23,7 +23,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
         ports:
-          - 5432:5432
+          - 5433:5432
     steps:
       - uses: actions/checkout@v4
       - uses: arduino/setup-task@v2
@@ -48,7 +48,7 @@ jobs:
 
       - name: Run Migrations
         env:
-          DB_URL: postgresql://postgres:postgres@127.0.0.1:5432/postgres
+          DB_URL: postgresql://postgres:postgres@127.0.0.1:5433/postgres
           MIGRATION_DIR: supabase/migrations
         run: |
           bun script/database/migrate.ts ${{ env.DB_URL }} ${{ env.MIGRATION_DIR }}
