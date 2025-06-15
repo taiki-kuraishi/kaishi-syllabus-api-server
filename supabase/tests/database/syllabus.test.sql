@@ -23,7 +23,7 @@ SELECT has_column('public', 'syllabus', 'updated_at', 'updated_at column should 
 SELECT has_column('public', 'syllabus', 'deleted_at', 'deleted_at column should exist');
 
 -- primary key test
-SELECT has_pk('syllabus', 'syllabus table should have primary key');
+SELECT has_pk('public', 'syllabus', 'syllabus table should have primary key');
 
 select * from finish();
 rollback;
