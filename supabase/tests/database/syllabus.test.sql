@@ -2,7 +2,7 @@ begin;
 select plan(18);
 
 -- table test
-SELECT has_table('syllabus', 'syllabus table should exist');
+SELECT has_table('public', 'syllabus', 'syllabus table should exist');
 
 -- columns test
 SELECT has_column('public', 'syllabus', 'id', 'id column should exist');
