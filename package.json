@@ -27,6 +27,7 @@
     "drizzle-orm": "0.44.2",
     "postgres": "3.4.7",
     "reflect-metadata": "^0.2.2",
+    "superjson": "^2.2.2",
     "tsyringe": "^4.10.0"
   }
 }

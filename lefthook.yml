@@ -2,7 +2,7 @@ pre-commit:
   parallel: true
   commands:
     tsc:
-      run: bun tsc
+      run: bun tsc --noEmit
     format:
       stage_fixed: true
       run: bunx biome check --fix --unsafe

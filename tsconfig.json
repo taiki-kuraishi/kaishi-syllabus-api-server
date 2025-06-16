@@ -4,11 +4,11 @@
     "lib": ["ESNext"],
     "jsx": "react-jsx",
     "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "allowJs": false,
     "checkJs": false,
-    "noEmit": true,
+    "noEmit": false,
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
@@ -25,9 +25,13 @@
       "@script/*": ["script/*"],
       "@test/*": ["test/*"]
     },
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "declaration": true,
+    "emitDeclarationOnly": false,
     // for tsyringe
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "include": ["worker-configuration.d.ts", "src/**/*.ts", "script/**/*.ts"]
+  "include": ["worker-configuration.d.ts", "src/**/*.ts"]
 }
