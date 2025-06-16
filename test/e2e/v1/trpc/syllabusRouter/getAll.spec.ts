@@ -1,16 +1,17 @@
-import { createExecutionContext, env, waitOnExecutionContext } from "cloudflare:test";
+import { env } from "cloudflare:test";
+import type { DrizzleClient } from "@src/libs/drizzle-orm/clients";
+import { Syllabus } from "@src/models/syllabus";
+import { prepareTrpcClient } from "@test/helpers/prepare-trpc-client";
+import { TransactionTestHelper } from "@test/helpers/transactionTestHelper";
+import { container } from "tsyringe";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { SyllabusServiceEntryPoint } from "../../../src";
-import { drizzleClient } from "../../../src/libs/drizzle-orm/clients";
-import { Syllabus } from "../../../src/models/syllabus";
-import { TransactionTestHelper } from "../../utils/transactionTestHelper";
 
-describe("SyllabusServiceEntryPoint.getAllSyllabus", () => {
-  const db = drizzleClient(env.DATABASE_URL);
+describe("test syllabusRouter.getAll", async () => {
+  const client = await prepareTrpcClient({ env });
+  const db = container.resolve<DrizzleClient>("DrizzleClient");
   const transactionHelper = new TransactionTestHelper(db);
 
   beforeEach(async () => {
-    console.log("env", env);
     await transactionHelper.begin();
   });
 
@@ -20,8 +21,6 @@ describe("SyllabusServiceEntryPoint.getAllSyllabus", () => {
 
   it("should retrieve all syllabuses", async () => {
     // arrange
-    const ctx = createExecutionContext();
-    const worker = new SyllabusServiceEntryPoint(ctx, env);
     const expected = {
       name: "マシンラーニング実習",
       startTerm: 1,
@@ -42,10 +41,9 @@ describe("SyllabusServiceEntryPoint.getAllSyllabus", () => {
     await db.insert(Syllabus).values(expected);
 
     // act
-    const response = await worker.getAllSyllabus();
-    await waitOnExecutionContext(ctx);
+    const res = await client.syllabusRouter.getAll();
 
     // assert
-    expect(response).toContainEqual(expect.objectContaining(expected));
+    expect(res).toContainEqual(expect.objectContaining(expected));
   });
 });

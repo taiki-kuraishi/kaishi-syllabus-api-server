@@ -24,7 +24,10 @@
       "@src/*": ["src/*"],
       "@script/*": ["script/*"],
       "@test/*": ["test/*"]
-    }
+    },
+    // for tsyringe
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": ["worker-configuration.d.ts", "src/**/*.ts", "script/**/*.ts"]
 }

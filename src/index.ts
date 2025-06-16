@@ -1,32 +1,15 @@
-import { WorkerEntrypoint } from "cloudflare:workers";
-import { drizzleClient } from "./libs/drizzle-orm/clients";
-import type { SelectSyllabus } from "./models/syllabus";
-import { SyllabusRepositoryImpl } from "./repositories/implementations/syllabusRepositoryImpl";
-import { SyllabusService, type SyllabusServiceInterface } from "./services/syllabusService";
+import "reflect-metadata";
+import { type FetchCreateContextFnOptions, fetchRequestHandler } from "@trpc/server/adapters/fetch";
+import { createContext } from "./libs/trpc/context";
+import { appRouter } from "./routers/app-router";
 
-export default class extends WorkerEntrypoint {
-  async fetch(): Promise<Response> {
-    return Response.json({
-      status: "ok",
+export default {
+  async fetch(request: Request, env: Env, _ctx: ExecutionContext): Promise<Response> {
+    return fetchRequestHandler({
+      endpoint: "/api/v1/trpc",
+      req: request,
+      router: appRouter,
+      createContext: (_options: FetchCreateContextFnOptions) => createContext({ env }),
     });
-  }
-}
-
-export class SyllabusServiceEntryPoint
-  extends WorkerEntrypoint
-  implements SyllabusServiceInterface
-{
-  private readonly syllabusService: SyllabusService;
-
-  constructor(ctx: ExecutionContext, env: Env) {
-    super(ctx, env);
-
-    const databaseClient = drizzleClient(env.DATABASE_URL);
-    const repository = new SyllabusRepositoryImpl(databaseClient);
-    this.syllabusService = new SyllabusService(repository);
-  }
-
-  async getAllSyllabus(): Promise<SelectSyllabus[]> {
-    return await this.syllabusService.getAllSyllabus();
-  }
-}
+  },
+};
