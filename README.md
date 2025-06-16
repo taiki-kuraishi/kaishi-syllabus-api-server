@@ -14,7 +14,7 @@
   bun install
   ```
 
-1. Run MCP server
+1. Run API server
 
   ```sh
   bun run dev
