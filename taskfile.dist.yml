@@ -38,6 +38,7 @@ tasks:
       - defer: docker compose down dev-db -v
       - docker compose exec dev-db sh -c 'until pg_isready -U postgres; do sleep 1; done'
       - bun script/database/migrate.ts {{.DEV_DB_URL}} {{.MIGRATION_DIR}}
+      - bun script/database/seed.ts {{.DEV_DB_URL}}
       - bun wrangler dev --env dev
 
   dev:supabase:

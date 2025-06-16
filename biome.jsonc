@@ -5,7 +5,7 @@
   },
   "files": {
     "include": ["**/*"],
-    "ignore": [".wrangler", "bun.lock", "node_modules", "worker-configuration.d.ts"]
+    "ignore": [".wrangler", "bun.lock", "node_modules", "worker-configuration.d.ts", "dist"]
   },
   "vcs": {
     "enabled": true,

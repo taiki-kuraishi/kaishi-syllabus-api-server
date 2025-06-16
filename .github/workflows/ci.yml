@@ -39,7 +39,7 @@ jobs:
       - run: task cloudflare-type-generate
       - name: diff check cloudflare-type-generate
         run: git diff --exit-code -- worker-configuration.d.ts
-      - run: bun run tsc
+      - run: bun run tsc --noEmit
       - run: bunx biome lint
       - run: bunx biome format
       - run: bun editorconfig-checker
