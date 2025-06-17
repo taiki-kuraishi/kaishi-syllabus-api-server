@@ -16,7 +16,7 @@
     "knip": "^5.61.0",
     "lefthook": "^1.11.14",
     "pg": "^8.16.0",
-    "supabase": "^2.24.3",
+    "supabase": "^2.26.9",
     "typescript": "^5.5.2",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "~3.2.3",
