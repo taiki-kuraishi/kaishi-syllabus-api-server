@@ -13,7 +13,7 @@
     "@types/node": "^22.15.30",
     "drizzle-kit": "^0.31.1",
     "editorconfig-checker": "^6.0.1",
-    "knip": "^5.61.0",
+    "knip": "^5.61.2",
     "lefthook": "^1.11.14",
     "pg": "^8.16.0",
     "supabase": "^2.26.9",
